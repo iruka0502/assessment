@@ -17,18 +17,44 @@ assessmentButton.addEventListener(
         console.log(userName);
     
 
-        //診断結果表示エリア
-        resultDivision.innerText = '';
-        const heading = document.createElement('h3');
-        heading.innerText = '診断結果';
-        resultDivision.appendChild(heading);
-
-        const paragraph = document.createElement('p');
-        const result = assessment(userName);
-        paragraph.innerText = result
-        resultDivision.appendChild(paragraph)
+       //診断結果表示エリア(old)
+       
+       // resultDivision.innerText = '';
+       // const heading = document.createElement('h3');
+       // heading.innerText = '診断結果';
+       // resultDivision.appendChild(heading);
+       //
+       // const paragraph = document.createElement('p');
+       // const result = assessment(userName);
+       // paragraph.innerText = result
+       // resultDivision.appendChild(paragraph)
         
-        //ツイートエリア
+       //診断結果表示エリア(new)
+       
+       // headerDivision の作成
+       const headerDivision = document.createElement('div');
+       headerDivision.setAttribute('class','card-header text-bg-primary');
+       headerDivision.innerText = '診断結果';
+       
+       // bodyDivision の作成
+       const bodyDivision = document.createElement('div');
+       bodyDivision.setAttribute('class','card-text');
+
+       const paragraph = document.createElement('p');
+       paragraph.setAttribute('class','card-text');
+       const result = assessment(userName);
+       paragraph.innerText = result;
+       bodyDivision.appendChild(paragraph);
+
+       // resultDivision に bootstrap のスタイルを適用する。
+       resultDivision.setAttribute('class','card');
+
+       // headerDivision と bodyDivision を resultDivision　に 差し込む
+       resultDivision.appendChild(headerDivision);
+       resultDivision.appendChild(bodyDivision);
+
+
+       //ツイートエリア
         tweetDivision.innerHTML = '';
         const anchor = document.createElement('a');
         const hrefValue =
